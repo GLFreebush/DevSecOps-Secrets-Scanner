@@ -1,6 +1,6 @@
-# DevSecOps-Secrets-Scanner
-Scanning for secrets.
 # DevSecOps Secrets Scanner
+
+[![GitGuardian Secret Scan](https://github.com/GLFreebush/DevSecOps-Secrets-Scanner/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/GLFreebush/DevSecOps-Secrets-Scanner/actions/workflows/secret-scan.yml)
 
 Automated secret scanning using GitGuardian for GitHub repositories. Detects API keys, tokens, credentials, database passwords, SSH keys, and other sensitive information.
 
@@ -33,8 +33,14 @@ Automated secret scanning using GitGuardian for GitHub repositories. Detects API
 1. Go to your repository settings: `Settings > Secrets and variables > Actions`
 2. Click **"New repository secret"**
 3. Add the following secrets:
-   - **Name:** `GITGUARDIAN_API_KEY` | **Value:** (your GitGuardian API key)
-   - **Name:** `NOTIFICATION_EMAIL` | **Value:** (your email for alerts)
+
+   | Secret Name | Required | Description |
+   |---|---|---|
+   | `GITGUARDIAN_API_KEY` | ✅ Yes | GitGuardian API key from [dashboard.gitguardian.com](https://dashboard.gitguardian.com/) → Settings → API Keys |
+   | `NOTIFICATION_EMAIL` | ✅ Yes | Recipient email address for alert notifications |
+   | `MAIL_USERNAME` | ✅ Yes | SMTP sender email address (e.g. your Gmail address) |
+   | `MAIL_PASSWORD` | ✅ Yes | SMTP password or [Gmail App Password](https://support.google.com/accounts/answer/185833) |
+   | `GH_PAT` | ✅ Yes | GitHub Personal Access Token with `repo` scope — used to check out `GLFreebush/Brute-Force-Detection-Engine` during scheduled scans |
 
 ### 3. Enable GitHub Actions
 
